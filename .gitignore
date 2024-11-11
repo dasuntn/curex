@@ -40,3 +40,5 @@ yarn-error.log*
 xcuserdata/
 *.xcscmblueprint
 *.xcodeproj/project.xcworkspace/
+
+.env

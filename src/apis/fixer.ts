@@ -1,9 +1,7 @@
-import axios from 'axios';
-import Constants from 'expo-constants';
+import axios from "axios";
 
-const FIXER_API =
-  !!Constants.manifest && !!Constants.manifest.extra ? (Constants.manifest.extra.FIXER_API as string) : '';
-
-const getLatestRates = axios.get(FIXER_API);
+const getLatestRates = axios.get(
+  `http://data.fixer.io/api/latest?access_key=${process.env.EXPO_PUBLIC_FIXER_API_KEY}`
+);
 
 export { getLatestRates };

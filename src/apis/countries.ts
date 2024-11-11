@@ -1,11 +1,7 @@
-import axios from 'axios';
-import Constants from 'expo-constants';
+import axios from "axios";
 
-const COUNTRIES_API =
-  !!Constants.manifest && !!Constants.manifest.extra
-    ? (Constants.manifest.extra.COUNTRIES_API as string)
-    : '';
-
-const getAll = axios.get(COUNTRIES_API);
+const getAll = axios.get(
+  "https://restcountries.com/v3.1/all?fields=name,capital,currencies,population,cca2"
+);
 
 export { getAll };
