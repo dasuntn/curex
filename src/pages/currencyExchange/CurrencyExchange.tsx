@@ -1,12 +1,12 @@
-import React from 'react';
-import currencyExchangeStyles from './currencyExchange.styles';
-import { Ionicons } from '@expo/vector-icons';
-import InputSection from './components/InputSection';
-import { View } from 'react-native';
-import { useCurrencyExchange } from './currencyExchange.logic';
-import ErrorComponent from '../components/errorComponent/ErrorComponent';
-import ResultSection from './components/ResultSection';
-import colors from '../../assets/styles/colors';
+import React from "react";
+import currencyExchangeStyles from "./currencyExchange.styles";
+import { Ionicons } from "@expo/vector-icons";
+import InputSection from "./components/InputSection";
+import { View } from "react-native";
+import { useCurrencyExchange } from "./currencyExchange.logic";
+import ErrorComponent from "../components/errorComponent/ErrorComponent";
+import ResultSection from "./components/ResultSection";
+import colors from "../../assets/styles/colors";
 
 const CurrencyExchange: React.FC = () => {
   const {
@@ -37,9 +37,13 @@ const CurrencyExchange: React.FC = () => {
           />
         </View>
       </View>
-      {!!convertedAmount.error && <ErrorComponent msg={convertedAmount.error} />}
-      {!!latestRatesData && latestRatesData.error && <ErrorComponent msg={latestRatesData.error} />}
-      <View style={currencyExchangeStyles.bottomSection}></View>
+      {!!convertedAmount.error && (
+        <ErrorComponent msg={convertedAmount.error} />
+      )}
+      {!!latestRatesData && latestRatesData.error && (
+        <ErrorComponent msg={latestRatesData.error} />
+      )}
+      <View style={currencyExchangeStyles.bottomSection} />
     </View>
   );
 };

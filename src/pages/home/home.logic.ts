@@ -1,13 +1,13 @@
-import { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
-import { Country, CountryResult } from '../../typing/common/country';
-import { getAll as getAllCountries } from '../../apis/countries';
-import { searchFilter } from '../../helpers/helpers';
+import { AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
+import { Country, CountryResult } from "../../typing/common/country";
+import { getAll as getAllCountries } from "../../apis/countries";
+import { searchFilter } from "../../helpers/helpers";
 
 const searchParam = ["name", "capital"];
 
 const useCountry = () => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [countriesData, setCountryData] = useState<CountryResult>();
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   /**
@@ -30,36 +30,39 @@ const useCountry = () => {
       .catch(() => {
         setCountryData({
           countries: undefined,
-          error: 'Could not access the countruy list',
+          error: "Could not access the country list",
           loading: false,
         });
       });
   };
 
-  useEffect(()=>{
-    if (!!countriesData && !!countriesData.countries && countriesData.countries.length > 0) {
-
-      const result = searchFilter(countriesData.countries,searchParam,searchText)
+  useEffect(() => {
+    if (
+      !!countriesData &&
+      !!countriesData.countries &&
+      countriesData.countries.length > 0
+    ) {
+      const result = searchFilter(
+        countriesData.countries,
+        searchParam,
+        searchText
+      );
 
       setFilteredCountries(result as Country[]);
-
-    }else {
-
+    } else {
       setCountryData({
         countries: undefined,
-        error: 'Could not access the country list',
+        error: "Could not access the country list",
         loading: false,
       });
-
     }
-
-  },[searchText])
+  }, [searchText]);
 
   useEffect(() => {
     fetchCountries();
   }, []);
 
-  return { searchText, setSearchText, filteredCountries, countriesData};
+  return { searchText, setSearchText, filteredCountries, countriesData };
 };
 
 export { useCountry };
