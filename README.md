@@ -5,7 +5,7 @@ curEx is a mobile app that converts the amount given in Sweden Krona to any desi
 
 ## Prerequisites
 
-	* Node version 16.6.1 or higher
+	* Node version 18 or higher
 	* Git
 	* Watchman (for macOS users)
 
@@ -44,7 +44,10 @@ curEx is a mobile app that converts the amount given in Sweden Krona to any desi
 * When the Expo Go app is finished installing, open it up. If you created an account with expo-cli then you can sign in from the "Profile" tab.
 
 
-* Download and unzip the project folder which was attached with the email to a convenient location.
+* Copy .env.example file to .env and fill in the required values.
+
+
+* To get the Fixer API key, sign up on https://fixer.io/ and get the API key and fill it in the .env file.
 
 
 * Open a terminal and go to the project root folder where the `package.json` file is located.
