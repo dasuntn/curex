@@ -1,10 +1,16 @@
 export interface Country {
   capital: string;
-  currencies: Currency[];
-  name: string;
+  currencies: CurrencyList;
+  name: {
+    common: string;
+    official: string;
+    nativeName: [];
+  };
+  flags: {
+    png: string;
+  };
   population: number;
-  numericCode: string;
-  alpha2Code: string;
+  cca2: string;
 }
 
 export interface Currency {
@@ -17,4 +23,10 @@ export interface CountryResult {
   countries: Country[] | undefined;
   error: string | undefined;
   loading: boolean;
+}
+export type CurrencyList = {
+  [key: string]: {
+    name: string;
+    symbol: string;
+  };
 };
