@@ -1,6 +1,9 @@
-import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { Country, CountryResult } from "../../typing/common/country";
+import {
+  Country,
+  CountryApi,
+  CountryResult,
+} from "../../typing/common/country";
 import { getAll as getAllCountries } from "../../apis/countries";
 import { searchFilter } from "../../helpers/helpers";
 
@@ -17,14 +20,32 @@ const useCountry = () => {
     setCountryData({ countries: undefined, error: undefined, loading: true });
 
     getAllCountries
-      .then((result: AxiosResponse<Country[]>) => {
+      .then((result) => {
         if (!!result && !!result.data) {
+          const countries = result.data?.map(
+            (country: CountryApi) => {
+              const currencies = Object.values(country.currencies).map(
+                (item, index) => ({
+                  code: Object.keys(country.currencies)[index],
+                  name: item.name,
+                  symbol: item.symbol,
+                })
+              );
+              return {
+                ...country,
+                name: country.name.common,
+                capital: country.capital[0],
+                currencies,
+              };
+            }
+          );
+
           setCountryData({
-            countries: result.data,
+            countries,
             error: undefined,
             loading: false,
           });
-          setFilteredCountries(result.data);
+          setFilteredCountries(countries);
         }
       })
       .catch(() => {

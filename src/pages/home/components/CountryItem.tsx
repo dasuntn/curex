@@ -24,7 +24,7 @@ const CountryItem: React.FC<Props> = ({ country }: Props) => {
       <Flag code={country.cca2} size={64} />
       <View style={countryListStyles.detail}>
         <Text numberOfLines={2} style={countryListStyles.nameText}>
-          {country.name.official}
+          {country.name}
         </Text>
         <Text
           style={countryListStyles.capitalText}

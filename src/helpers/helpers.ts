@@ -24,7 +24,7 @@ export const searchFilter = (data: LooseObject[], searchParam: string[], text: s
 
    return data.filter((item: LooseObject) => {
     return searchParam.some((searchProp : string)=>{
-      return item[searchProp].toString().toLowerCase().indexOf(text.toLowerCase()) > -1
+      return item[searchProp]?.toString().toLowerCase().indexOf(text.toLowerCase()) > -1
     })
   })
 
